@@ -41,9 +41,9 @@ Cloud Storage (data storage)
 
 Compute Engine (VMs)
 
-Life Sciences API / GKE (workflow execution)
+Life Sciences GKE (workflow execution)
 
-Workflow Manager: Nextflow / Snakemake
+Workflow Manager: Nextflow
 
 Containerization: Docker (hosted on Google Container Registry)
 
@@ -69,25 +69,6 @@ Differential Expression Analysis
 
 Identify up/down-regulated genes using DESeq2 or edgeR.
 
-
- Setup Instructions:
-1. Clone Repository
-git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>
-
-2. Configure Google Cloud
-gcloud auth login
-gcloud config set project <PROJECT_ID>
-gsutil mb gs://<your-bucket-name>
-
-3. Build & Push Docker Image
-docker build -t gcr.io/<PROJECT_ID>/rna-seq-pipeline .
-docker push gcr.io/<PROJECT_ID>/rna-seq-pipeline
-
-4. Run Workflow (Example: Nextflow)
-nextflow run workflow/main.nf \
-  --input gs://<your-bucket-name>/data/*.fastq \
-  --outdir gs://<your-bucket-name>/results/
  Benchmarking:
 
 Compare local execution vs Google Cloud execution.
@@ -102,15 +83,6 @@ Cloud-based RNA-seq pipeline.
 
 Docker images for reproducibility.
 
-Workflow scripts (Nextflow/Snakemake).
+Workflow scripts (Nextflow).
 
 Benchmarking report.
-
- Contributing:
-
-Pull requests are welcome! For major changes, please open an issue first to discuss what you’d like to change.
-
- License:
-
-This project is licensed under the MIT License – see the LICENSE
- file for details.
