@@ -42,22 +42,21 @@ This repository implements an automated, Infrastructure as Code (IaC) pipeline f
 #### 1. Clone the repository:
 
 ### 1. Clone the Repository
-```bash
+
 git clone https://github.com/Nohitha05-web/Cloud-based-High-Throughput-Genomic-Data-Analysis.git
 cd Cloud-based-High-Throughput-Genomic-Data-Analysis 
 
 ### 2. Initialize Git:
 
-```bash
 git init
 git remote add origin https://github.com/Nohitha05-web/Cloud-based-High-Throughput-Genomic-Data-Analysis.git
 
 ### 3. Configure AWS CLI:
-```bash 
+
 aws configure
 
 #### 4. Customize main.tf:
-```bash
+
 curl ifconfig.me
 
 Replace YOUR_PUBLIC_IP/32 in security group with your IP
@@ -65,7 +64,7 @@ Ensure key_name = "your-ec2-keypair"
 
 ### Usage:
 #### 1. Provision Infrastructure
-```bash
+
 terraform init 
 terraform plan  
 terraform apply --auto-approve
@@ -78,24 +77,21 @@ s3_bucket_name = "nohitha-genomics-hpc-zcpnbw61"
 latest_ami_id = <sensitive>
 
 ### 2. Upload Dataset to S3
-```bash
+
 aws s3 cp human_liver.tsv s3://nohitha-genomics-hpc-zcpnbw61/
 
 ### 3. SSH to EC2 and Run Analysis
-```bash
 chmod 400 your-ec2-keypair.pem  
 ssh -i your-ec2-keypair.pem ec2-user@34.224.168.140
 
 
 #### Inside EC2:
-```bash
 pip3 install boto3 statsmodels    #install libraries
 python3 analyze_genomics.py     # Run script 
 
 
 ### 4. Upload Results to S3:
 Inside EC2:
-```bash
 aws s3 cp liver_expression_summary.csv s3://nohitha-genomics-hpc-zcpnbw61/
 aws s3 cp top_expressed_genes.csv s3://nohitha-genomics-hpc-zcpnbw61/
 aws s3 cp expression_histogram.png s3://nohitha-genomics-hpc-zcpnbw61/
@@ -104,7 +100,6 @@ exit
 
 ### 5. Download Results Locally
 
-```bash
 aws s3 cp s3://nohitha-genomics-hpc-zcpnbw61/top_expressed_genes.csv .
 aws s3 cp s3://nohitha-genomics-hpc-zcpnbw61/liver_expression_summary.csv .
 aws s3 cp s3://nohitha-genomics-hpc-zcpnbw61/expression_histogram.png .
