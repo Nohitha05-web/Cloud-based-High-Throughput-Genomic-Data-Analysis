@@ -1,4 +1,4 @@
-#Cloud-Based High-Throughput Genomic Data Analysis
+# Cloud-Based High-Throughput Genomic Data Analysis
 Overview:
 
 This project implements a cloud-based pipeline for analyzing RNA-seq (FASTQ) data using Google Cloud Platform (GCP).
