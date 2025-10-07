@@ -41,15 +41,18 @@ This repository implements an automated, Infrastructure as Code (IaC) pipeline f
 
 #### 1. Clone the repository:
 
-```bash 
+### 1. Clone the Repository
+```bash
 git clone https://github.com/Nohitha05-web/Cloud-based-High-Throughput-Genomic-Data-Analysis.git
-cd Cloud-based-High-Throughput-Genomic-Data-Analysis
-#### 2. Initialize Git:
-```bash 
-git init
-git remote add origin https://github.com/Nohitha05-web/Cloud-based-High-Throughput-Genomic-Data-Analysis.git 
+cd Cloud-based-High-Throughput-Genomic-Data-Analysis 
 
-#### 3. Configure AWS CLI:
+### 2. Initialize Git:
+
+```bash
+git init
+git remote add origin https://github.com/Nohitha05-web/Cloud-based-High-Throughput-Genomic-Data-Analysis.git
+
+### 3. Configure AWS CLI:
 ```bash 
 aws configure
 
