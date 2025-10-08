@@ -53,21 +53,21 @@ git remote add origin https://github.com/Nohitha05-web/Cloud-based-High-Throughp
 
 ### 3. Configure AWS CLI:
 
-aws configure
+- aws configure
 
 #### 4. Customize main.tf:
 
-curl ifconfig.me
+- curl ifconfig.me
 
-Replace YOUR_PUBLIC_IP/32 in security group with your IP
-Ensure key_name = "your-ec2-keypair"
+- Replace YOUR_PUBLIC_IP/32 in security group with your IP
+- Ensure key_name = "your-ec2-keypair"
 
 ### Usage:
 #### 1. Provision Infrastructure
 
-terraform init 
-terraform plan  
-terraform apply --auto-approve
+- terraform init 
+- terraform plan  
+- terraform apply --auto-approve
 
 
 #### Outputs:
@@ -78,47 +78,47 @@ latest_ami_id = <sensitive>
 
 ### 2. Upload Dataset to S3
 
-aws s3 cp human_liver.tsv s3://nohitha-genomics-hpc-zcpnbw61/
+- aws s3 cp human_liver.tsv s3://nohitha-genomics-hpc-zcpnbw61/
 
 ### 3. SSH to EC2 and Run Analysis
-chmod 400 your-ec2-keypair.pem  
-ssh -i your-ec2-keypair.pem ec2-user@34.224.168.140
+- chmod 400 your-ec2-keypair.pem  
+- ssh -i your-ec2-keypair.pem ec2-user@34.224.168.140
 
 
 #### Inside EC2:
-pip3 install boto3 statsmodels    #install libraries
-python3 analyze_genomics.py     # Run script 
+- pip3 install boto3 statsmodels    #install libraries
+- python3 analyze_genomics.py     # Run script 
 
 
 ### 4. Upload Results to S3:
 Inside EC2:
-aws s3 cp liver_expression_summary.csv s3://nohitha-genomics-hpc-zcpnbw61/
-aws s3 cp top_expressed_genes.csv s3://nohitha-genomics-hpc-zcpnbw61/
-aws s3 cp expression_histogram.png s3://nohitha-genomics-hpc-zcpnbw61/
-exit
+- aws s3 cp liver_expression_summary.csv s3://nohitha-genomics-hpc-zcpnbw61/
+- aws s3 cp top_expressed_genes.csv s3://nohitha-genomics-hpc-zcpnbw61/
+- aws s3 cp expression_histogram.png s3://nohitha-genomics-hpc-zcpnbw61/
+- exit
 
 
 ### 5. Download Results Locally
 
-aws s3 cp s3://nohitha-genomics-hpc-zcpnbw61/top_expressed_genes.csv .
-aws s3 cp s3://nohitha-genomics-hpc-zcpnbw61/liver_expression_summary.csv .
-aws s3 cp s3://nohitha-genomics-hpc-zcpnbw61/expression_histogram.png .
-head top_expressed_genes.csv 
-xdg-open expression_histogram.png
+- aws s3 cp s3://nohitha-genomics-hpc-zcpnbw61/top_expressed_genes.csv .
+- aws s3 cp s3://nohitha-genomics-hpc-zcpnbw61/liver_expression_summary.csv .
+- aws s3 cp s3://nohitha-genomics-hpc-zcpnbw61/expression_histogram.png .
+- head top_expressed_genes.csv 
+- xdg-open expression_histogram.png
 
 
 ### Results:
 - **Top Expressed Genes** (`top_expressed_genes.csv`):  
-  Contains the 100 genes with the highest mean expression (e.g., `ALB`, `GAPDH`).  
-  Columns: `gene`, `mean_expr`, `median_expr`, `var_expr`.
+  - Contains the 100 genes with the highest mean expression (e.g., `ALB`, `GAPDH`).  
+  - Columns: `gene`, `mean_expr`, `median_expr`, `var_expr`.
 
 - **Full Summary** (`liver_expression_summary.csv`):  
   Statistical summary for all **35,000** genes.
 
 - **Visualization** (`expression_histogram.png`):  
-  Right-skewed histogram of mean expression with **blue bars**, a **KDE curve**, and a **red line** marking the top gene.
+  - Right-skewed histogram of mean expression with **blue bars**, a **KDE curve**, and a **red line** marking the top gene.
 
 ### Cleanup:
-To avoid costs:
-terraform destroy --auto-approve
+- To avoid costs:
+- terraform destroy --auto-approve
  
